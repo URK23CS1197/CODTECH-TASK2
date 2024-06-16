@@ -1,0 +1,72 @@
+import tkinter as tk
+import math
+a=tk.Tk()
+a.geometry("500x500")
+a.title("students grade tracker")
+grade=tk.Label(fg="red",font=("birch",15))
+grade.place(x=30,y=280)
+average=tk.Label(fg="red",font=("birch",15))
+average.place(x=30,y=320)
+result=tk.Label()
+result.place(x=5,y=250)
+l1=tk.Label(text="name",bg="pink",font=("birch",10))
+l1.place(x=2,y=10)
+e1=tk.Entry(a)
+e1.place(x=50,y=10)
+l2=tk.Label(text="roll no",bg="pink",font=("birch",10))
+l2.place(x=2,y=40)
+e2=tk.Entry(a)
+e2.place(x=50,y=40)
+l3=tk.Label(text="ENTER STUDENTS MARK for 100",fg="blue",bg="grey",font="bold")
+l3.place(x=70,y=70)
+l4=tk.Label(text="subject 1",bg="pink")
+l4.place(x=2,y=100)
+l5=tk.Label(text="subject 2",bg="pink")
+l5.place(x=2,y=130)
+l6=tk.Label(text="subject 3",bg="pink")
+l6.place(x=2,y=160)
+l7=tk.Label(text="subject 4",bg="pink")
+l7.place(x=2,y=190)
+e3=tk.Entry(a)
+e3.place(x=70,y=100)
+e4=tk.Entry(a)
+e4.place(x=70,y=130)
+e5=tk.Entry(a)
+e5.place(x=70,y=160)
+e6=tk.Entry(a)
+e6.place(x=70,y=190)
+def display():
+    b=c=d=f=0
+    b=e3.get()
+    c=e4.get()
+    d=e5.get()
+    f=e6.get()
+    result.config(text=f"grade of {e1.get()} is:",fg="red",font=(10))
+    total=int(b)+int(c)+int(d)+int(f)
+    avg=int(total)/4
+    average.config(text=f"average is {avg:.2f}")
+    if int(total)>=370:
+        grade.config(text=f"total marks is {total} and grade is A",)
+    elif int(total)>=330:
+        grade.config(text=f"total marks is {total} and grade is B")
+    elif int(total)>=300:
+        grade.config(text=f"total marks is {total} and grade is C")
+    elif int(total)>=250:
+        grade.config(text=f"total marks is {total} and grade is D")
+    elif int(total)>=200:
+        grade.config(text=f"total marks is {total} and grade is E")
+    elif int(total)<200:
+        grade.config(text=f"total marks is {total} and grade is F")
+def clear():
+    e1.delete(0,tk.END)
+    e2.delete(0,tk.END)
+    e3.delete(0,tk.END)
+    e4.delete(0,tk.END)
+    e5.delete(0,tk.END)
+    e6.delete(0,tk.END)
+
+button1=tk.Button(a,text="calculate",command=display)
+button1.place(x=50,y=220)
+button2=tk.Button(a,text="clear",command=clear)
+button2.place(x=150,y=220)
+a.mainloop()
